@@ -4,10 +4,14 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 public class FormSistema extends javax.swing.JFrame {
+    LinkedList<Atividade> lista = new LinkedList<>();
+    Comparator<Atividade> compareTempo = 
+            (Atividade a1, Atividade a2) ->
+                    a1.getTempo() - a2.getTempo();
     
     public FormSistema() {
         initComponents();
-        carregaArquivo();
+        //carregaArquivo();
     }
 
 
@@ -292,22 +296,43 @@ public class FormSistema extends javax.swing.JFrame {
     }
     void mostra(){
         listAtividades.setText("");
-        /*if(!filaNormal.isEmpty())
-           for(Pessoa p:filaNormal)
-               listFilaNormal.append(p+"\n");*/
-      
-    }
+        if(!lista.isEmpty())
+            for(Atividade a:lista)
+                listAtividades.append(a+"\n");
+    }// fim mostra
    
     
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       
+       Atividade a = new Atividade();
+       a.setNome(txtNome.getText());
+       a.setPrioridade(
+         Integer.parseInt(txtPrioridade.getText()) );
+       a.setTempo(
+               Integer.parseInt(txtTempo.getText()));
+       if(txtPosicaoAdd.getText().equals(""))
+           lista.add(a);
+       else
+           lista.add(Integer.parseInt(txtPosicaoAdd.getText()),a);
+       mostra();
     }//GEN-LAST:event_btnAddActionPerformed
 
    
     
     
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
-        
+        Atividade a;
+        if(!lista.isEmpty()){
+            if(txtPosicaoRemove.getText().equals(""))
+                a = lista.remove();
+            else
+                a = lista.remove(
+                    Integer.parseInt(
+                        txtPosicaoRemove.getText()) );
+            
+            lblProx.setText(a.getNome());
+            mostra();
+        }// fim if isEmpty        
+                
     }//GEN-LAST:event_btnResolverActionPerformed
 
     private void btnOrdPrioridadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdPrioridadeActionPerformed
@@ -315,11 +340,13 @@ public class FormSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOrdPrioridadeActionPerformed
 
     private void btnOrdTempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdTempoActionPerformed
-        // TODO add your handling code here:
+        lista.sort(compareTempo);
+        mostra();
     }//GEN-LAST:event_btnOrdTempoActionPerformed
 
     private void btnOrdNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdNomeActionPerformed
-        // TODO add your handling code here:
+        Collections.sort(lista);
+        mostra();
     }//GEN-LAST:event_btnOrdNomeActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
