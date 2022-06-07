@@ -11,7 +11,7 @@ public class FormSistema extends javax.swing.JFrame {
     
     public FormSistema() {
         initComponents();
-        //carregaArquivo();
+        carregaArquivo();
     }
 
 
@@ -275,24 +275,24 @@ public class FormSistema extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void carregaArquivo(){
-      /* String csvFile = "dados.csv";
+     String csvFile = "dados.csv";
         String line = "";
         String[] leitura = null;
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             while ((line = br.readLine()) != null) {
                 Atividade p = new Atividade();
                 leitura = line.split(",");
-                System.out.println("Nome:"+leitura[0]+ " RG= " + leitura[1] + " , Idade=" + leitura[2] + "");
+                System.out.println("Nome:"+leitura[0]+ " prio= " + leitura[1] + " , tempo=" + leitura[2] + "");
                 p.setNome(leitura[0]);
-                p.setRg(leitura[1]);
+                p.setPrioridade(Integer.parseInt(leitura[1]));
                 int idade = (Integer.parseInt(leitura[2]));
-                p.setIdade(idade);
-                //addFila(p); // separar
+                p.setTempo(idade);
+                lista.add(p); 
             }// fim percurso no arquivo
             mostra();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
     void mostra(){
         listAtividades.setText("");
@@ -350,7 +350,7 @@ public class FormSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOrdNomeActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**

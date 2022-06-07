@@ -35,6 +35,17 @@ public class Atividade implements Comparable<Atividade>{
               compareTo(outraAtividade.getNome());
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Atividade outraAtividade = (Atividade) o;
+
+        return this.nome != null ? (outraAtividade.nome).equals(this.nome) : outraAtividade.nome == null;
+    }
+
+    
      @Override
     public String toString(){
         return getNome() + " : " + getPrioridade() + " - " + getTempo() ;
