@@ -1,8 +1,9 @@
 
 package javalinkedlist;
 //import java.lang.Comparable;
-public class Atividade implements Comparable<Atividade>{
+public class Paciente implements Comparable<Paciente>{
     private String nome;
+    private String enfermidade;
     private int prioridade;
     private int tempo;
 
@@ -12,6 +13,12 @@ public class Atividade implements Comparable<Atividade>{
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    public String getEnfermidade(){
+        return enfermidade;
+    }
+    public void setEnfermidade(String enfermidade){
+        this.enfermidade = enfermidade;
     }
 
     public int getPrioridade() {
@@ -30,25 +37,25 @@ public class Atividade implements Comparable<Atividade>{
         this.tempo = tempo;
     }
     
-    public int compareTo(Atividade outraAtividade){
+    public int compareTo(Paciente outroPaciente){ 
       return this.getNome().
-              compareTo(outraAtividade.getNome());
+              compareTo(outroPaciente.getNome());
     }
     
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o) { 
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Atividade outraAtividade = (Atividade) o;
+        Paciente outroPaciente = (Paciente) o;
 
-        return this.nome != null ? (outraAtividade.nome).equals(this.nome) : outraAtividade.nome == null;
+        return this.nome != null ? (outroPaciente.nome).equals(this.nome) : outroPaciente.nome == null;
     }
 
     
      @Override
     public String toString(){
-        return getNome() + " : " + getPrioridade() + " - " + getTempo() ;
+        return getNome() + " : "  + getEnfermidade()+ " - " + getPrioridade() + " - " + getTempo() ;
     }// fim toString
     
 }
