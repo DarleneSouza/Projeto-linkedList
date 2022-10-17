@@ -4,4 +4,4 @@ Linguagem|IDE|Interface
 ---|---|---
 Java|Netbens|Swing
 ## Sistema funcionando
-![captura do sistema](./img/capturaJavaQueue.png)
+![captura do sistema](./capturaLinkedList.png)
